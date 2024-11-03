@@ -25,9 +25,12 @@
             >
                 Go Back
             </button>
-            <p class='text-5xl bg-white font-mono border rounded-lg py-2 px-1'>{stock}:{price}$</p>
+            <div class='flex flex-col w-full items-center'>
+                <p class='text-5xl text-white font-mono py-2 px-1'>{stock}</p>
+                <p class='text-4xl text-white font-mono py-2 px-1'>{price}$</p>
+            </div>
         </div>
-        <div class='grid grid-cols-3 w-full h-1/2  text-white items-center gap-4 mb-28'>
+        <div class='grid grid-cols-3 w-full h-1/2 text-white items-center gap-4 mb-28'>
             <div class={css_div}>
                 <p
                 class={css_p}>Fundamental Analysis</p>

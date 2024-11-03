@@ -4,7 +4,8 @@
     let placeholder = 'Enter the name of the stock...'
     let stock = null;
     let error = false;
-    let tickers = null;
+    let tickers = [];
+    let data_received = null;
     const api_send_ticker_dev = 'http://localhost:5000/yfinance/get_price'
     const api_get_tickers_dev = 'http://localhost:5000/yfinance/get_stocks'
 
@@ -13,7 +14,10 @@
         return await response.json()
     }
     onMount(async()=> {
-        tickers = await send_data()
+        data_received = await send_data()
+        for(const i in data_received['infos']){
+            tickers = [...tickers, data_received['infos'][i]]
+        }
         console.log(tickers)
     })
     
@@ -66,7 +70,7 @@
         <p class='text-sm text-red-400 mt-1'>Please enter a valid ticker</p>
     </div>
     {/if}
-    <button class='mt-5 border rounded-lg py-2 px-1 bg-white hover:bg-gray-200'
+    <button class='mt-5 rounded-lg py-2 px-1 bg-black text-white hover:bg-stone-900'
     on:click={async() => {
         await send_ticker()
     }}
@@ -74,8 +78,51 @@
     <div class='flex flex-grow items-center w-full h-full justify-center overflow-hidden'>
         <div class='animate-scroll inline-flex h-full items-center gap-10'>
              {#each tickers as ticker}
+             <div class="border rounded-lg bg-white px-1 py-2 h-1/2 w-72 shadow-lg flex flex-col">
+                <div class='w-full text-xl font-mono text-center mb-3'>
+                    {ticker['name']}
+                </div>
+                <div class='w-full ml-2 flex flex-col font-serif text-lg gap-2'>
+                    <div>
+                        Ticker: {ticker['symbol']}
+                    </div>
+                    <div>
+                        Current Price: {ticker['price']}$
+                    </div>
+                    <div>
+                        High: {ticker['high']}$
+                    </div>
+                    <div>
+                        Low: {ticker['low']}$
+                    </div>
+                    <div>
+                        Price Target: {ticker['target']}$
+                    </div>
+                </div>
+             </div>
+             {/each}
+             {#each tickers as ticker}
              <div class="border rounded-lg bg-white px-1 py-2 h-1/2 w-72 shadow-lg">
-                {ticker}
+                <div class='w-full text-xl font-mono text-center mb-3'>
+                    {ticker['name']}
+                </div>
+                <div class='w-full ml-2 flex flex-col font-serif text-lg gap-2'>
+                    <div>
+                        Ticker: {ticker['symbol']}
+                    </div>
+                    <div>
+                        Current Price: {ticker['price']}$
+                    </div>
+                    <div>
+                        High: {ticker['high']}$
+                    </div>
+                    <div>
+                        Low: {ticker['low']}$
+                    </div>
+                    <div>
+                        Price Target: {ticker['target']}$
+                    </div>
+                </div>
              </div>
              {/each}
         </div>

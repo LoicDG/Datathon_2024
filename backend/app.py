@@ -22,7 +22,8 @@ def get_stocks():
     for symbol, ticker in tickers.tickers.items():
         data = ticker.info
         infos.append({
-            symbol:data['symbol'],
+            "symbol":symbol,
+            "name":data['shortName'],
             'price': data['currentPrice'],
             'high': data['dayHigh'],
             'low':data['dayLow'],
