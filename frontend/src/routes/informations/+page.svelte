@@ -30,9 +30,11 @@
         </div>
         <div class='w-full flex h-full justify-center mb-10'>
             <div class='border h-full w-2/3 rounded-md mr-2 flex flex-col justify-end pl-1'>
+                <!--
                 <input class='mt-auto h-12 w-10/12 text-white rounded-lg focus:outline-none px-2 bg-stone-800'
                 placeholder="Enter your question..."
                 />
+                -->
             </div>
             <div class='w-1/4 h-full rounded-md grid grid-rows-3 items-center justify-center'>
                 <button class={css_button}>
