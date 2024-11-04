@@ -26,13 +26,14 @@ StockGPT assists financial analysts by automating parts of the stock analysis pr
 
 1. Clone the repository:
     ```
-    git clone https://github.com/your-username/stockgpt.git
-    cd stockgpt
+    git clone https://github.com/LoicDG/Datathon_2024.git
+    cd Datathon_2024
     ```
 
 2. Install dependencies:
     ```
-    pip install -r requirements.txt
+    pip install -r backend/requirements.txt
+    cd frontend
     npm install
     ```
 
@@ -41,19 +42,19 @@ StockGPT assists financial analysts by automating parts of the stock analysis pr
 
 ## Running the Project
 
-Start the backend server:
+Start the backend server (from the `backend` folder):
 
 ```
 python app.py
 ```
 
-Run the Svelte frontend:
+Run the Svelte frontend (from the `frontend` folder):
 
 ```
 npm run dev
 ```
 
-The website should now be accessible at `http://localhost:5000` (or the configured port).
+The website should now be accessible at `http://localhost:5173`.
 ## Usage
 
 1. Enter the ticker symbol of a stock (e.g., AAPL for Apple).
