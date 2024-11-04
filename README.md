@@ -44,9 +44,8 @@ StockGPT assists financial analysts by automating parts of the stock analysis pr
 
 Start the backend server (from the `backend` folder):
 
-```
-python app.py
-```
+* open the file named llm.ipynb
+* run the entire jupyter notebook, wait a couple minutes for it to start
 
 Run the Svelte frontend (from the `frontend` folder):
 
