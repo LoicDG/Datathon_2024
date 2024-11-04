@@ -8,6 +8,8 @@
     let data_received = null;
     const api_send_ticker_dev = 'http://localhost:5000/yfinance/get_price'
     const api_get_tickers_dev = 'http://localhost:5000/yfinance/get_stocks'
+    const api_get_prompts_dev = 'http://localhost:5000/api/ticker'
+
 
     const send_data = async () => {
         let response = await fetch(api_get_tickers_dev)
@@ -38,6 +40,7 @@
             //do something
             sessionStorage.setItem('stock', stock)
             sessionStorage.setItem('price', data.price)
+            await get_prompts()
             await goto('/informations')
         }else if(response.status == 400){
             //tell the user the stock is invalid
@@ -45,6 +48,20 @@
             return
         }
         //do something with the thing that came from the stuff with the whatchumacallit
+    }
+    const get_prompts = async () => {
+        let response = await fetch(api_get_prompts_dev, {
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({'ticker':stock})
+        })
+        let data = await response.json()
+        let fundamental = data['fund']
+        let technical = data['tech']
+        sessionStorage.setItem('fund', fundamental)
+        sessionStorage.setItem('tech', technical)
     }
 </script>
 
